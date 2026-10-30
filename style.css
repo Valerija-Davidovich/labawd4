@@ -1,0 +1,370 @@
+/* =========================================
+   СИСТЕМА (Палитра + Единая сетка отступов)
+   ========================================= */
+:root {
+    --bg-main: #FCF8F8;       
+    --bg-card: #FFFFFF;       
+    --accent: #F5AFAF;        
+    --accent-hover: #E89B9B;  
+    --border-color: #F9DFDF;  
+    --badge-bg: #FBEFEF;      
+    --text-dark: #4A2B35;     
+    --text-muted: #8E6B77;    
+    
+    /* Единая сетка отступов (шаг 8px) */
+    --s-1: 8px;
+    --s-2: 16px;
+    --s-3: 24px;
+    --s-4: 32px;
+    --s-6: 48px;
+    --s-8: 64px;
+    --s-12: 96px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--s-3); 
+}
+
+/* --- БАЗОВЫЕ ШРИФТЫ --- */
+h1 { font-size: 48px; line-height: 1.2; font-weight: 800; letter-spacing: -1px; }
+h2 { font-size: 18px; font-weight: 500; color: var(--text-muted); line-height: 1.4; }
+p { font-size: 16px; color: var(--text-muted); margin: 0; }
+
+/* =========================================
+   ШАПКА
+   ========================================= */
+.header {
+    padding: var(--s-3) 0;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo { font-weight: 800; font-size: 20px; color: var(--text-dark); text-decoration: none; }
+
+.nav {
+    display: flex;
+    gap: var(--s-3);
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+.nav a:hover { color: var(--text-muted); }
+
+/* =========================================
+   СЕКЦИЯ HERO (ГЛАВНЫЙ ЭКРАН)
+   ========================================= */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: var(--s-12) 0 var(--s-8) 0;
+}
+
+.hero-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--s-8);
+    align-items: center;
+}
+
+.hero-image { display: flex; justify-content: center; }
+
+.avatar {
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    object-fit: cover;
+    object-position: center 20%;
+    border-radius: 50%;
+    box-shadow: 0 24px 48px rgba(245, 175, 175, 0.25);
+    border: 2px solid var(--bg-card);
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-3);
+}
+
+.badge {
+    background-color: var(--badge-bg);
+    color: var(--text-dark);
+    padding: var(--s-1) var(--s-2);
+    border-radius: 50px;
+    font-size: 16px;       
+    font-weight: 600;      
+}
+
+.hero-subtitle {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.hero-actions {
+    display: flex;
+    gap: var(--s-2);
+    margin-top: var(--s-2);
+}
+
+/* --- КНОПКИ --- */
+.btn, .btn-outline {
+    padding: var(--s-2) var(--s-4);
+    font-size: 16px;       
+    font-weight: 600;      
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.btn { background-color: var(--accent); color: var(--text-dark); border-color: var(--accent); }
+.btn:hover { background-color: var(--accent-hover); border-color: var(--accent-hover); }
+.btn-outline { background-color: transparent; color: var(--text-dark); border-color: var(--accent); }
+.btn-outline:hover { background-color: var(--badge-bg); border-color: var(--accent-hover); }
+
+/* =========================================
+   СЕКЦИЯ НАВЫКИ
+   ========================================= */
+.skills-section {
+    padding: var(--s-8) 0;
+}
+
+.section-title {
+    font-size: 32px;
+    color: var(--text-dark);
+    font-weight: 700;
+    margin-bottom: var(--s-6);
+    text-align: center;
+}
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--s-4);
+}
+
+.card {
+    background-color: var(--bg-card);
+    padding: var(--s-4);
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(74, 43, 53, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    border: 1px solid var(--bg-main);
+}
+
+.card-icon {
+    width: 56px;
+    height: 56px;
+    background-color: var(--badge-bg);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    margin-bottom: var(--s-1);
+}
+
+.card-icon svg { width: 28px; height: 28px; }
+.card h3 { font-size: 20px; font-weight: 700; color: var(--text-dark); }
+
+/* =========================================
+   СЕКЦИЯ КОНТАКТЫ
+   ========================================= */
+.contact-section {
+    padding: var(--s-8) 0;
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-8);
+    align-items: center;
+}
+
+/* Жестко прижимаем контент слева к краю */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    gap: var(--s-3); 
+}
+
+.contact-info .section-title {
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.contact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    font-size: 16px;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+/* --- КНОПКИ СОЦСЕТЕЙ (Встанут ровно под телефоном) --- */
+.social-links {
+    display: flex;
+    gap: var(--s-2); 
+    margin-top: var(--s-1); 
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;               
+    height: 48px;
+    background-color: var(--bg-card); 
+    color: var(--text-dark);   
+    border-radius: 12px;       
+    box-shadow: 0 4px 12px rgba(74, 43, 53, 0.05); 
+    transition: background-color 0.3s ease; 
+    border: 2px solid transparent;
+}
+
+.social-btn:hover {
+    background-color: var(--accent); 
+}
+
+.social-btn svg {
+    width: 24px;  
+    height: 24px;
+}
+
+/* --- ФОРМА --- */
+.contact-form-box {
+    background-color: var(--bg-card);
+    padding: var(--s-4);
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(74, 43, 53, 0.04);
+    border: 1px solid var(--bg-main);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: var(--s-2);
+    border: 2px solid var(--bg-main);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    color: var(--text-dark);
+    background-color: var(--bg-main);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background-color: var(--bg-card);
+}
+
+/* =========================================
+   ФУТЕР
+   ========================================= */
+.footer {
+    padding: var(--s-4) 0;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* =========================================
+   АДАПТИВНОСТЬ (Мобилки)
+   ========================================= */
+@media (max-width: 900px) {
+    .hero-wrapper,
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: var(--s-6);
+    }
+
+    .hero-content {
+        align-items: center; 
+        text-align: center;
+    }
+
+    .contact-info {
+        align-items: center; /* На мобилке контакты по центру */
+        text-align: center;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn, .btn-outline { width: 100%; }
+    h1 { font-size: 36px; }
+    .avatar { max-width: 300px; height: 300px; }
+    .header { position: relative; padding: var(--s-2) 0; }
+    .hero { padding: var(--s-6) 0; }
+}
+.skills-section {
+    padding: var(--s-8) 0;
+    background-color: var(--badge-bg); /* Нежно-розовый оттенок (#FBEFEF) */
+}
+.contact-section {
+    padding: var(--s-8) 0;
+    background-color: var(--bg-card); /* Чисто белый (#FFFFFF), чтобы форма выделялась */
+}
+.footer {
+    padding: var(--s-4) 0;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-main); /* Возвращаем базовый светло-розовый (#FCF8F8) */
+}
